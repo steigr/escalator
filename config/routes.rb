@@ -1,7 +1,7 @@
 Escalator::Application.routes.draw do
   resources :assignments
 
-  root :to => "issues#index"
+  root :to => "dashboard#index"
 
   devise_for :users, :path_prefix => "devise"
 
@@ -38,6 +38,8 @@ Escalator::Application.routes.draw do
 
   resources :google_client_login_credentials, :to => "google_client_login",
       :except => [:edit, :update]
+
+  resources :dashboard
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
