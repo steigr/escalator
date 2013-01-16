@@ -2,7 +2,7 @@
 %strong Only the acquired ClientLogin token, not your password, will be saved on the server.
 
 = form_tag(google_client_login_credentials_index_path) do
-  %table
+  %table.table.table-striped
     %tr
       %td= label_tag(:email, "Email:")
       %td= text_field_tag(:email)
