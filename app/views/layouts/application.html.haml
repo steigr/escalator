@@ -1,18 +1,48 @@
+!!! 5
 %html
   %head
     %title Escalator
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    :css
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
   %body
-    #user_nav
-      - if user_signed_in?
-        Signed in as #{current_user.email}.
-        = link_to "Sign out", destroy_user_session_path, :method => "delete"
-      - else
-        = link_to "Sign up", new_user_registration_path
-        or
-        = link_to "sign in", new_user_session_path
-    - flash.each do |name, msg|
-      = content_tag :div, msg, :id => "flash_#{name}"
-    = yield
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar.collapsed{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand{:href => "/"} Escalator
+          .nav-collapse.collapse
+            %ul.nav
+              - if user_signed_in?
+                %li{:class => active_navigation('users')}
+                  = link_to "Users", users_path
+                %li{:class => active_navigation('issues')}
+                  = link_to "Issues", issues_path
+                %li{:class => active_navigation('rotations')}
+                  = link_to "Rotations", rotations_path
+                %li{:class => active_navigation('escalation_policies')}
+                  = link_to "Policies", escalation_policies_path
+                %li{:class => active_navigation('users')}
+                  %a{:href => "/users/#{current_user.id}"} #{current_user.name}
+                %li
+                  = link_to "Sign out", destroy_user_session_path, :method => "delete"
+              - else
+                %li
+                  = link_to "Sign up", new_user_registration_path
+                %li
+                  = link_to "sign in", new_user_session_path            
+                %li
+                  %a{:href => "#about"} About
+                %li
+                  %a{:href => "#contact"} Contact
+    =render :partial => "shared/flash_messages", :locals => {:flash => flash}
+    .container
+      = yield
