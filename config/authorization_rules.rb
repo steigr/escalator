@@ -21,7 +21,7 @@ authorization do
     includes :guest
 
     has_permission_on [
-      :escalation_policies, :issues, :rotations, :users
+      :escalation_policies, :issues, :rotations, :users, :dashboard
     ], :to => [
       :index, :show
     ]
