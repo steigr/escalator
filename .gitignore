@@ -22,3 +22,6 @@ rspec-results.html
 
 # Ignore Sublime Text Project Files
 /*.sublime-project
+
+# Generated automatically
+/Gemfile.lock
