@@ -19,3 +19,6 @@ rspec-results.html
 
 # Ignore SimpleCov HTML output.
 /coverage
+
+# Ignore Sublime Text Project Files
+/*.sublime-project
