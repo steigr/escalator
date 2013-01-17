@@ -1,2 +1,10 @@
 .span4
-	Users
+	.div
+		%table.table.table-striped
+			%tr
+				%td
+					= link_to 'Users', '/users'
+			%tr
+				%td
+					= @usercount
+	
