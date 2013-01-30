@@ -8,6 +8,6 @@ class Issue < ActiveRecord::Base
 
   # Get seconds since this issue was posted.
   def delayed
-    Time.zone.now - posted_at
+    Time.zone.now - created_at
   end
 end

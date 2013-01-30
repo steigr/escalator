@@ -1,5 +1,6 @@
-class EscalationJob < Struct.new(:issue_id)
+.class EscalationJob < Struct.new(:issue_id)
   def perform
+    Rails.logger.debug "Running EscalationJob"
     issue = Issue.find(issue_id)
     delayed_minutes = issue.delayed / 60
     # TODO(hermannloose): Update once there is a defined set of states.
