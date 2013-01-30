@@ -1,4 +1,8 @@
 Escalator::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   resources :assignments
 
   root :to => "dashboard#index"
