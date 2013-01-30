@@ -27,6 +27,8 @@ gem 'therubyracer', :platforms => :ruby
 
 gem 'jquery-rails'
 
+gem "boxcar_api", "~> 1.2.0"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -41,11 +43,17 @@ gem 'capistrano'
 
 gem 'rest-client'
 
-gem 'delayed_job_active_record'
+gem 'daemons'
+gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git'
+gem 'delayed_job_active_record', '~> 0.3.2'
 
 # Performance Testing
 group :development do
   gem 'ruby-prof'
+end
+
+group :test do
+  gem 'cucumber-rails'
 end
 
 # Testing
@@ -54,7 +62,6 @@ group :development, :test do
   gem 'mocha'
   gem 'rspec-rails'
   gem 'shoulda-matchers', :git => 'git://github.com/thoughtbot/shoulda-matchers.git'
-  gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'capybara'
   gem 'launchy'
